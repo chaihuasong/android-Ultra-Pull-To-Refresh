@@ -1,0 +1,4 @@
+rootProject.name = 'android-Ultra-Pull-To-Refresh'
+
+include ':ptr-demo'
+include ':ptr-lib'

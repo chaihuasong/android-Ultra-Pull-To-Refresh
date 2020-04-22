@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "in.srain.cube.views.ptr.demo"
+        minSdkVersion 14
+        targetSdkVersion 28
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['resources']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+            // aidl.srcDirs = ['src']
+            // renderscript.srcDirs = ['src']
+        }
+
+        androidTest.setRoot('tests')
+    }
+    dexOptions {
+        preDexLibraries = false
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.aar'], dir: 'libs')
+    implementation 'in.srain.cube:clog:1.0.2'
+    //implementation 'in.srain.cube:grid-view-with-header-footer:1.0.12'
+    //implementation 'in.srain.cube:cube-sdk:1.0.44@aar'
+    implementation "androidx.viewpager2:viewpager2:1.1.0-alpha01"
+    implementation project(path: ':ptr-lib')
+}
